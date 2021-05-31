@@ -1,0 +1,6 @@
+[submodule "vendor/sdk"]
+	path = vendor/sdk
+	url = https://github.com/altmp/cpp-sdk.git
+[submodule "vendor/zpl"]
+	path = vendor/zpl
+	url = https://github.com/zpl-c/zpl.git
