@@ -17,6 +17,7 @@
 // -
 // Internals
 // -
+#undef ZPL_IMPLEMENTATION
 #include "log.hpp"
 #include "runtime.hpp"
 #include "resource.hpp"

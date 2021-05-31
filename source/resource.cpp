@@ -19,6 +19,8 @@ bool VResource::OnInit() {
 		return false;
 	}
 
+	Log::Colored << "Loaded DLL into program" << Log::Endl;
+
 	// Grab a pointer to the OnInit function.
 	auto onInit = static_cast<f_OnInit>(zpl_dll_proc_address(mod, "OnInit"));
 	if (onInit == nullptr) {
@@ -33,6 +35,7 @@ bool VResource::OnInit() {
 	// Make the pointer to that function known to our class.
 	fn_OnExit = onExit;
 
+	Log::Colored << "Determined addresses. Executing..." << Log::Endl;
 	// Call our function.
 	fn_OnInit();
 

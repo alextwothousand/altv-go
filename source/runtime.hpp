@@ -5,8 +5,9 @@
 #ifndef ALTV_GO_RUNTIME_HPP
 #define ALTV_GO_RUNTIME_HPP
 
-#include "resource.hpp"
 #include <SDK.h>
+#include "resource.hpp"
+#include "log.hpp"
 
 class VRuntime : public alt::IScriptRuntime {
 public:
@@ -15,6 +16,7 @@ public:
 	void DestroyImpl(alt::IResource::Impl* impl) override;
 
 	static VRuntime& Instance() {
+		Log::Colored << "Created instance of VRuntime" << Log::Endl;
 		static VRuntime _instance;
 		return _instance;
 	}

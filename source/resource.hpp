@@ -7,18 +7,19 @@
 
 #include <SDK.h>
 #include <zpl.h>
+#include <string>
 
 #include "log.hpp"
 #include "runtime.hpp"
 
-#include <string>
-#include <functional>
-
-typedef std::function<void()> f_OnInit;
-typedef std::function<void()> f_OnExit;
+//typedef void (*f_OnInit)();
+//typedef void (*f_OnExit)();
 
 class VRuntime;
 class VResource : public alt::IResource::Impl {
+	using f_OnInit = void (*)();
+	using f_OnExit = void(*)();
+
 	VRuntime* runtime;
 	alt::IResource* resource;
 

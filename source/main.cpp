@@ -5,6 +5,7 @@
 #include "main.hpp"
 
 EXPORT bool altMain(alt::ICore* core) {
+	Log::Colored << "altMain proc called." << Log::Endl;
 	alt::ICore::SetInstance(core);
 	auto& runtime = VRuntime::Instance();
 
@@ -14,7 +15,6 @@ EXPORT bool altMain(alt::ICore* core) {
 	return true;
 }
 
-EXPORT uint32_t GetSDKVersion()
-{
+EXPORT uint32_t GetSDKVersion() {
 	return alt::ICore::SDK_VERSION;
 }
