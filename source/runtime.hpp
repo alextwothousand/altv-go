@@ -9,15 +9,15 @@
 #include "resource.hpp"
 #include "log.hpp"
 
-class VRuntime : public alt::IScriptRuntime {
+class GoRuntime : public alt::IScriptRuntime {
 public:
-	VRuntime() = default;
+	GoRuntime() = default;
 	alt::IResource::Impl* CreateImpl(alt::IResource* impl) override;
 	void DestroyImpl(alt::IResource::Impl* impl) override;
 
-	static VRuntime& Instance() {
-		Log::Colored << "Created instance of VRuntime" << Log::Endl;
-		static VRuntime _instance;
+	static GoRuntime& Instance() {
+		Log::Colored << "Created instance of GoRuntime" << Log::Endl;
+		static GoRuntime _instance;
 		return _instance;
 	}
 };

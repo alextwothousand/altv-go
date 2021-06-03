@@ -6,11 +6,12 @@
 
 EXPORT bool altMain(alt::ICore* core) {
 	Log::Colored << "altMain proc called." << Log::Endl;
-	alt::ICore::SetInstance(core);
-	auto& runtime = VRuntime::Instance();
 
-	core->RegisterScriptRuntime("v", &runtime);
-	Log::Colored << "Loaded V module, version ~y~" GO_MODULE_VERSION << Log::Endl;
+	alt::ICore::SetInstance(core);
+	auto& runtime = GoRuntime::Instance();
+
+	core->RegisterScriptRuntime("go", &runtime);
+	Log::Colored << "Loaded Go module, version ~y~" GO_MODULE_VERSION << Log::Endl;
 
 	return true;
 }

@@ -6,34 +6,47 @@
 #define ALTV_GO_RESOURCE_HPP
 
 #include <SDK.h>
-#include <zpl.h>
 #include <string>
 
 #include "log.hpp"
 #include "runtime.hpp"
 
+//#include <zpl.h>
+#include <Windows.h>
+
+#ifndef ZPL_DEF
+#define ZPL_DEF
+
+#define zpl_dll_load(x) (void*)LoadLibraryA(x)
+#define zpl_dll_proc_address(x,y) (void*)GetProcAddress((HMODULE)x,y)
+#define ZPL_PATH_SEPARATOR "\\"
+
+#endif
+
 //typedef void (*f_OnInit)();
 //typedef void (*f_OnExit)();
 
-class VRuntime;
-class VResource : public alt::IResource::Impl {
-	using f_OnInit = void (*)();
-	using f_OnExit = void(*)();
+class GoRuntime;
+class GoResource : public alt::IResource::Impl {
+	using f_onInit = void (*)();
+	using f_onExit = void(*)();
 
-	VRuntime* runtime;
+	GoRuntime* runtime;
 	alt::IResource* resource;
 
 	std::string main;
 
-	f_OnInit fn_OnInit;
-	f_OnExit fn_OnExit;
+	f_onInit fn_onInit = nullptr;
+	f_onExit fn_onExit = nullptr;
 
 public:
-	VResource(VRuntime* runtime, alt::IResource* resource);
-	~VResource() override = default;
+	GoResource(GoRuntime* runtime, alt::IResource* resource);
+	~GoResource() override = default;
 
-	bool OnInit();
-	bool OnExit();
+	bool Start();
+	bool Stop();
+
+	bool OnEvent(const alt::CEvent* ev);
 };
 
 #endif //ALTV_GO_RESOURCE_HPP

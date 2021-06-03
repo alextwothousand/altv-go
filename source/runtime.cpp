@@ -4,12 +4,12 @@
 
 #include "runtime.hpp"
 
-alt::IResource::Impl *VRuntime::CreateImpl(alt::IResource *impl) {
-	auto resource = new VResource(this, impl);
+alt::IResource::Impl *GoRuntime::CreateImpl(alt::IResource *impl) {
+	auto resource = new GoResource(this, impl);
 	return resource;
 }
 
-void VRuntime::DestroyImpl(alt::IResource::Impl *impl) {
-	auto* resource = dynamic_cast<VResource*>(impl);
+void GoRuntime::DestroyImpl(alt::IResource::Impl *impl) {
+	auto* resource = dynamic_cast<GoResource*>(impl);
 	delete resource;
 }

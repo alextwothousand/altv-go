@@ -11,15 +11,19 @@
 // -
 // Externals
 // -
-#include <SDK.h>
 #include <zpl.h>
+#include <SDK.h>
 
 // -
 // Internals
 // -
-#undef ZPL_IMPLEMENTATION
 #include "log.hpp"
 #include "runtime.hpp"
 #include "resource.hpp"
+
+// -
+// ZPL source
+// -
+#include <zpl.h>
 
 #endif //ALTV_GO_MAIN_HPP
